@@ -12,29 +12,28 @@ export function Hero() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        Hiring now: 50+ Junior Data Roles in Stockholm
+                        Admissions Open: Batch 12 Starts Soon
                     </div>
 
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6">
-                        Launch Your <span className="text-emerald-600">Data Career</span> <br className="hidden sm:block" />
-                        in Europe.
+                        Become a <span className="text-emerald-600">Global Data Engineer</span> <br className="hidden sm:block" />
+                        from India.
                     </h1>
 
                     <p className="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-                        Expert-led training & placement support for Indian Engineers.
-                        Direct access to high-growth startups in Sweden, Germany, and the Nordics.
+                        Live classes by mentors from Microsoft & Volvo. Master the Nordic Tech Stack and launch your career in Europe.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                        <Link href="/jobs">
+                        <Link href="/courses">
                             <Button size="lg" className="h-12 px-8 text-base bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-200/50 transition-all hover:scale-105">
-                                View Open Jobs
+                                Explore Bootcamps
                                 <ArrowRight className="ml-2 h-4 w-4" />
                             </Button>
                         </Link>
                         <Link href="/roadmap">
                             <Button size="lg" variant="outline" className="h-12 px-8 text-base border-slate-200 text-slate-700 hover:bg-white hover:text-emerald-600 hover:border-emerald-200 bg-white">
-                                Get Free Roadmap
+                                Download Curriculum
                             </Button>
                         </Link>
                     </div>

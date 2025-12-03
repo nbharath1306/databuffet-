@@ -1,5 +1,8 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/home/Hero";
+import { TrustBar } from "@/components/home/TrustBar";
+import { ProgramDetails } from "@/components/home/ProgramDetails";
+import { PricingCard } from "@/components/home/PricingCard";
 import { JobCard } from "@/components/jobs/JobCard";
 import { CourseSection } from "@/components/courses/CourseSection";
 
@@ -38,6 +41,8 @@ export default function Home() {
     <main className="min-h-screen bg-slate-50">
       <Navbar />
       <Hero />
+      <TrustBar />
+      <ProgramDetails />
 
       {/* Featured Jobs Section */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,6 +69,7 @@ export default function Home() {
         </div>
       </section>
 
+      <PricingCard />
       <CourseSection />
     </main>
   );

@@ -3,23 +3,30 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
+  Terminal, 
+  Database, 
+  Cpu, 
+  BarChart3, 
   Globe, 
-  MapPin, 
+  MessageCircle, 
   CheckCircle2, 
   XCircle, 
-  Code2, 
-  Languages, 
-  Briefcase, 
-  GraduationCap, 
   ArrowRight, 
   Menu, 
-  X,
-  Database,
-  Users
+  X, 
+  Zap,
+  Code2,
+  Smartphone,
+  Instagram
 } from 'lucide-react';
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [experience, setExperience] = useState(0);
+
+  // Salary Calculator Logic
+  const indianSalary = 3.5 + (experience * 1.5); // Base 3.5L + 1.5L per year
+  const remoteSalary = 12 + (experience * 4);   // Base 12L + 4L per year
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -27,382 +34,388 @@ export default function LandingPage() {
     transition: { duration: 0.6 }
   };
 
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+    <div className="min-h-screen bg-slate-950 font-sans text-slate-100 selection:bg-cyan-500 selection:text-slate-900">
       {/* Sticky Navbar */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+      <nav className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#006AA7] rounded-lg flex items-center justify-center">
-                  <Database className="w-5 h-5 text-[#FECC00]" />
-                </div>
-                <span className="font-bold text-xl tracking-tight text-slate-900">DataBuffet.io</span>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                <Terminal className="w-5 h-5 text-white" />
               </div>
+              <span className="font-bold text-xl tracking-tight text-white">DataBuffet<span className="text-cyan-400">.io</span></span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#program" className="text-slate-600 hover:text-[#006AA7] font-medium transition-colors">Program</a>
-              <a href="#mentorship" className="text-slate-600 hover:text-[#006AA7] font-medium transition-colors">Mentorship</a>
-              <a href="#founders" className="text-slate-600 hover:text-[#006AA7] font-medium transition-colors">Founders</a>
-              <button className="bg-[#006AA7] hover:bg-[#005a8f] text-white px-6 py-2 rounded-full font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                Apply for Entrance Test
-              </button>
+              <a href="#stack" className="text-slate-400 hover:text-cyan-400 font-medium transition-colors">The Stack</a>
+              <a href="#mentors" className="text-slate-400 hover:text-cyan-400 font-medium transition-colors">Mentors</a>
+              <a href="#stories" className="text-slate-400 hover:text-cyan-400 font-medium transition-colors">Stories</a>
             </div>
 
-            <div className="md:hidden flex items-center">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-slate-600">
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
+            <div className="flex items-center gap-4">
+              <button className="hidden md:block text-slate-400 hover:text-white font-medium">Login</button>
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-5 py-2 rounded-full font-bold text-sm shadow-lg shadow-cyan-500/25 flex items-center gap-2"
+              >
+                <Zap className="w-4 h-4 fill-current" />
+                Apply Now
+              </motion.button>
             </div>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-b border-slate-200">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#program" className="block px-3 py-2 text-slate-600 font-medium">Program</a>
-              <a href="#mentorship" className="block px-3 py-2 text-slate-600 font-medium">Mentorship</a>
-              <a href="#founders" className="block px-3 py-2 text-slate-600 font-medium">Founders</a>
-              <button className="w-full mt-4 bg-[#006AA7] text-white px-6 py-3 rounded-lg font-semibold">
-                Apply for Entrance Test
-              </button>
-            </div>
-          </div>
-        )}
       </nav>
 
-      {/* SECTION 1: The "Possibility" Hero */}
-      <section className="relative pt-20 pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-slate-50 -z-10" />
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-[#FECC00]/5 skew-x-12 -z-10" />
-        
+      {/* SECTION 1: The "Scroll-Stopper" Hero */}
+      <section className="relative pt-12 pb-20 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px] -z-10" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-orange-500/5 rounded-full blur-[100px] -z-10" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-[#006AA7] font-semibold text-sm mb-8">
-              <Globe className="w-4 h-4" />
-              <span>Headquartered in Stockholm | Operations in Hyderabad</span>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-6"
+            >
+              <Globe className="w-3 h-3" />
+              Remote First • European Tech
             </motion.div>
             
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
-              Don't Just Graduate. <br />
-              <span className="text-[#006AA7]">Go Global.</span>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight"
+            >
+              Your Desk in <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Hyderabad</span>. <br />
+              Your Career in <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Stockholm</span>.
             </motion.h1>
             
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Your college placement cell can get you a 3 LPA job. We bridge you to <span className="font-semibold text-slate-900">Swedish Startups</span> paying in Euros. Work remotely from India.
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-slate-400 mb-8 leading-relaxed"
+            >
+              Master the Nordic Tech Stack (Airflow, Snowflake, DBT). <br className="hidden md:block" />
+              Get placed in European Remote Internships without leaving home.
             </motion.p>
-            
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="w-full sm:w-auto px-8 py-4 bg-[#006AA7] hover:bg-[#005a8f] text-white text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                Check Your Scholarship Eligibility
+          </div>
+
+          {/* Salary Calculator */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-2xl mx-auto bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl"
+          >
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-4">
+                <label className="text-slate-300 font-medium">Years of Experience</label>
+                <span className="text-cyan-400 font-bold text-xl">{experience} Years</span>
+              </div>
+              <input 
+                type="range" 
+                min="0" 
+                max="3" 
+                step="1" 
+                value={experience}
+                onChange={(e) => setExperience(parseInt(e.target.value))}
+                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+              />
+              <div className="flex justify-between text-xs text-slate-500 mt-2">
+                <span>Fresher</span>
+                <span>1 Year</span>
+                <span>2 Years</span>
+                <span>3 Years</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 md:gap-8">
+              <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 text-center">
+                <p className="text-slate-400 text-xs md:text-sm mb-1">Avg Indian Service Co.</p>
+                <p className="text-2xl md:text-3xl font-bold text-slate-300">₹{indianSalary}L</p>
+              </div>
+              <div className="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-xl p-4 border border-cyan-500/30 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-cyan-500/5 animate-pulse" />
+                <p className="text-cyan-400 text-xs md:text-sm mb-1 font-semibold">Remote Euro Stipend</p>
+                <p className="text-2xl md:text-3xl font-bold text-white">₹{remoteSalary}L</p>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-white text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-white/10 flex items-center justify-center gap-2 text-lg"
+              >
+                Take the Entrance Test
                 <ArrowRight className="w-5 h-5" />
-              </button>
-              <p className="text-sm text-slate-500 mt-2 sm:mt-0">
-                <span className="font-semibold text-[#006AA7]">120+</span> students placed this year
-              </p>
-            </motion.div>
+              </motion.button>
+              <p className="text-slate-500 text-xs mt-3">Limited seats for the upcoming cohort.</p>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* SECTION 2: The "Pain Point" (The Service Trap) */}
-      <section className="py-24 bg-white">
+      {/* SECTION 2: The "Reality Check" */}
+      <section className="py-20 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why the Standard Path is Broken</h2>
-            <p className="text-lg text-slate-600">The gap between college curriculum and industry reality is widening.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Why You Feel "Left Behind"</h2>
+            <p className="text-slate-400">Your college isn't bad. The syllabus is just old. <br />We bridge the 10-year gap in 12 weeks.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* The Old Path */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-2xl border border-red-100 bg-red-50/50"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <XCircle className="w-8 h-8 text-red-500" />
-                <h3 className="text-2xl font-bold text-slate-800">The Old Path</h3>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* College Syllabus */}
+            <div className="bg-slate-900 rounded-2xl p-6 border border-slate-800 opacity-75">
+              <div className="flex items-center gap-3 mb-6 border-b border-slate-800 pb-4">
+                <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center">
+                  <Smartphone className="w-5 h-5 text-slate-400" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-300">Your College Syllabus</h3>
               </div>
               <ul className="space-y-4">
-                {[
-                  "Mass Recruiters (TCS/Infosys/Wipro)",
-                  "3-6 Months Bench Period",
-                  "Legacy Tech (Mainframe, Support)",
-                  "Fixed Salary (3-4 LPA)",
-                  "No International Exposure"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-700">
-                    <XCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                {["Java / C++ Theory", "Ancient SQL (Oracle 9i)", "Manual Testing", "Localhost Projects"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-slate-500">
+                    <XCircle className="w-5 h-5 text-red-900/50" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
-            {/* The DataBuffet Path */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-2xl border border-[#006AA7]/20 bg-blue-50/50 shadow-lg relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#FECC00]/10 rounded-bl-full -mr-4 -mt-4" />
-              <div className="flex items-center gap-3 mb-6">
-                <CheckCircle2 className="w-8 h-8 text-[#006AA7]" />
-                <h3 className="text-2xl font-bold text-slate-800">The DataBuffet Path</h3>
+            {/* Startup Needs */}
+            <div className="bg-gradient-to-b from-slate-900 to-slate-900/50 rounded-2xl p-6 border border-cyan-500/30 relative">
+              <div className="absolute -top-3 -right-3 bg-cyan-500 text-slate-950 text-xs font-bold px-3 py-1 rounded-full">
+                INDUSTRY STANDARD
+              </div>
+              <div className="flex items-center gap-3 mb-6 border-b border-slate-800 pb-4">
+                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-cyan-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white">What Startups Want</h3>
               </div>
               <ul className="space-y-4">
                 {[
-                  "Product Companies & Startups",
-                  "Direct Impact from Day 1",
-                  "Modern Stack (Snowflake, Airflow, DBT)",
-                  "Earn in Euros (Remote)",
-                  "Global Networking & Mentorship"
+                  "Vector Databases (Pinecone)", 
+                  "RAG Pipelines & LLMs", 
+                  "Cloud Orchestration (Airflow)", 
+                  "Production Deployments (AWS/GCP)"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-700">
-                    <CheckCircle2 className="w-5 h-5 text-[#006AA7] flex-shrink-0 mt-0.5" />
+                  <li key={i} className="flex items-center gap-3 text-slate-300">
+                    <CheckCircle2 className="w-5 h-5 text-cyan-500" />
                     <span className="font-medium">{item}</span>
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: The "Stack" (Outcomes) */}
+      <section id="stack" className="py-20 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-2">Don't Just Learn. <span className="text-cyan-400">Build.</span></h2>
+              <p className="text-slate-400">Specialized tracks designed for the modern data stack.</p>
+            </div>
+            <a href="#" className="text-cyan-400 font-bold flex items-center gap-2 hover:gap-3 transition-all">
+              View Full Curriculum <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <motion.div whileHover={{ y: -5 }} className="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-colors group">
+              <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
+                <Database className="w-6 h-6 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Data Engineering</h3>
+              <p className="text-blue-400 text-sm font-mono mb-4">"The Plumber of the AI World"</p>
+              <p className="text-slate-400 text-sm mb-6">Build robust pipelines that feed AI models. Master Airflow, Kafka, and Snowflake.</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-slate-900 rounded text-xs text-slate-500 border border-slate-800">Airflow</span>
+                <span className="px-2 py-1 bg-slate-900 rounded text-xs text-slate-500 border border-slate-800">Snowflake</span>
+              </div>
+            </motion.div>
+
+            {/* Card 2 */}
+            <motion.div whileHover={{ y: -5 }} className="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-colors group">
+              <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors">
+                <Cpu className="w-6 h-6 text-cyan-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">AI Engineering</h3>
+              <p className="text-cyan-400 text-sm font-mono mb-4">"Beyond ChatGPT Wrappers"</p>
+              <p className="text-slate-400 text-sm mb-6">Fine-tune LLMs and build RAG systems. Go deep into LangChain and Vector DBs.</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-slate-900 rounded text-xs text-slate-500 border border-slate-800">LangChain</span>
+                <span className="px-2 py-1 bg-slate-900 rounded text-xs text-slate-500 border border-slate-800">Pinecone</span>
+              </div>
+            </motion.div>
+
+            {/* Card 3 */}
+            <motion.div whileHover={{ y: -5 }} className="bg-slate-950 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-colors group">
+              <div className="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors">
+                <BarChart3 className="w-6 h-6 text-orange-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Analytics</h3>
+              <p className="text-orange-400 text-sm font-mono mb-4">"Storytelling with Data"</p>
+              <p className="text-slate-400 text-sm mb-6">Transform raw data into business insights. Master DBT and modern BI tools.</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-slate-900 rounded text-xs text-slate-500 border border-slate-800">DBT</span>
+                <span className="px-2 py-1 bg-slate-900 rounded text-xs text-slate-500 border border-slate-800">Tableau</span>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: The "Vernacular" USP */}
-      <section id="mentorship" className="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80')] opacity-10 bg-cover bg-center" />
+      {/* SECTION 4: Language Barrier Breaker */}
+      <section className="py-20 bg-slate-950 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-cyan-900/10 to-transparent -z-10" />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FECC00]/20 text-[#FECC00] font-semibold text-sm mb-6">
-                <Languages className="w-4 h-4" />
-                <span>Native Language Support</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 text-xs font-bold uppercase tracking-wider mb-6">
+                <MessageCircle className="w-3 h-3" />
+                Vernacular Support
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                English Code. <br />
-                <span className="text-[#FECC00]">Desi Mentorship.</span>
+              <h2 className="text-4xl font-bold text-white mb-6">
+                Learn in your language. <br />
+                <span className="text-cyan-400">Code in theirs.</span>
               </h2>
-              <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-                We know learning complex topics is harder in a second language. Our mentors explain concepts in <span className="text-white font-semibold">Tamil, Telugu, and Hindi</span>, but train you to present in English for international clients.
+              <p className="text-slate-400 text-lg mb-8">
+                Complex concepts shouldn't be scary. Our mentors explain the hard stuff in Tamil, Telugu, and Hindi, so you can master the logic before mastering the syntax.
               </p>
-              <div className="flex flex-wrap gap-4">
-                {['Tamil Mentorship', 'Telugu Mentorship', 'Hindi Mentorship'].map((lang) => (
-                  <div key={lang} className="px-6 py-3 rounded-lg bg-white/10 border border-white/20 backdrop-blur-sm font-medium">
-                    {lang}
+              
+              <div className="grid grid-cols-3 gap-4">
+                {['Tamil', 'Telugu', 'Hindi'].map((lang) => (
+                  <div key={lang} className="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center hover:border-cyan-500/50 transition-colors cursor-default">
+                    <span className="block text-2xl mb-1">🗣️</span>
+                    <span className="text-sm font-bold text-slate-300">{lang}</span>
                   </div>
                 ))}
               </div>
             </div>
             
-            <div className="grid grid-cols-1 gap-6">
-              <div className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-xl font-bold">S</div>
+            <div className="flex-1 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-2xl opacity-20" />
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 relative">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-slate-800 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=100&h=100" alt="Mentor" className="w-full h-full object-cover" />
+                  </div>
                   <div>
-                    <h4 className="font-bold">Suresh K.</h4>
-                    <p className="text-sm text-slate-400">Mentor (Ex-Swiggy)</p>
+                    <h4 className="font-bold text-white">Arjun Reddy</h4>
+                    <p className="text-xs text-slate-400">Senior Data Engineer @ Spotify</p>
                   </div>
                 </div>
-                <p className="text-slate-300 italic">"I explain Airflow DAGs in Telugu first. Once the logic clicks, we switch to English for the code review. It just works."</p>
-              </div>
-              <div className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md translate-x-4 md:translate-x-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-xl font-bold">P</div>
-                  <div>
-                    <h4 className="font-bold">Priya R.</h4>
-                    <p className="text-sm text-slate-400">Mentor (Ex-Freshworks)</p>
+                <div className="space-y-3">
+                  <div className="bg-slate-800/50 p-3 rounded-lg rounded-tl-none text-sm text-slate-300">
+                    "Distributed Computing is like a wedding buffet management..."
+                  </div>
+                  <div className="bg-cyan-500/10 p-3 rounded-lg rounded-tr-none text-sm text-cyan-100 ml-auto max-w-[80%]">
+                    (Explains Sharding in Telugu)
+                  </div>
+                  <div className="bg-slate-800/50 p-3 rounded-lg rounded-tl-none text-sm text-slate-300">
+                    "Now let's write the partition logic in Python."
                   </div>
                 </div>
-                <p className="text-slate-300 italic">"Understanding the 'Why' is crucial. We break down Distributed Computing concepts in Tamil before diving into Snowflake architecture."</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: The Roadmap */}
-      <section id="program" className="py-24 bg-slate-50">
+      {/* SECTION 5: Social Proof (Instagram Stories Style) */}
+      <section id="stories" className="py-20 bg-slate-900/30 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+            <Instagram className="w-6 h-6 text-pink-500" />
+            Student Stories
+          </h2>
+        </div>
+
+        {/* Horizontal Scroll Container */}
+        <div className="flex overflow-x-auto pb-8 px-4 sm:px-6 lg:px-8 gap-6 snap-x snap-mandatory no-scrollbar">
+          {[
+            { name: "Ravi", loc: "Warangal", role: "Data Engineer", company: "Klarna", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300&h=500" },
+            { name: "Sneha", loc: "Vizag", role: "AI Engineer", company: "Spotify", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300&h=500" },
+            { name: "Karthik", loc: "Coimbatore", role: "Analytics Eng", company: "Truecaller", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300&h=500" },
+            { name: "Ananya", loc: "Madurai", role: "Data Engineer", company: "Volvo", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300&h=500" },
+          ].map((student, i) => (
+            <div key={i} className="flex-shrink-0 w-64 h-96 rounded-2xl relative overflow-hidden snap-center group cursor-pointer">
+              <img src={student.img} alt={student.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 p-4 w-full">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xs font-bold bg-cyan-500 text-slate-950 px-2 py-0.5 rounded">HIRED</span>
+                </div>
+                <h3 className="text-lg font-bold text-white">{student.name}</h3>
+                <p className="text-sm text-slate-300">{student.loc} ➔ {student.company}</p>
+              </div>
+              {/* Story Ring */}
+              <div className="absolute top-4 left-4 w-10 h-10 rounded-full border-2 border-pink-500 p-0.5">
+                <img src={student.img} className="w-full h-full rounded-full object-cover" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 6: The "No-Risk" Footer */}
+      <footer className="bg-slate-950 border-t border-slate-800 pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Your Journey to a Global Career</h2>
-            <p className="text-lg text-slate-600">A structured path from campus to remote work.</p>
-          </div>
-
-          <div className="relative">
-            {/* Connecting Line */}
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
-
-            <div className="grid md:grid-cols-3 gap-8 relative z-10">
-              {/* Step 1 */}
-              <motion.div 
-                whileHover={{ y: -10 }}
-                className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100"
-              >
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                  <Code2 className="w-8 h-8 text-[#006AA7]" />
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                  <Terminal className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">1. Intense Training</h3>
-                <p className="text-sm text-[#006AA7] font-semibold mb-4">3 MONTHS</p>
-                <p className="text-slate-600 mb-4">Master niche Data Engineering skills that are in high demand globally.</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-600">Airflow</span>
-                  <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-600">Snowflake</span>
-                  <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-600">DBT</span>
-                </div>
-              </motion.div>
-
-              {/* Step 2 */}
-              <motion.div 
-                whileHover={{ y: -10 }}
-                className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100"
-              >
-                <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                  <Briefcase className="w-8 h-8 text-yellow-600" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">2. Shadow Internship</h3>
-                <p className="text-sm text-yellow-600 font-semibold mb-4">2 MONTHS</p>
-                <p className="text-slate-600">Work on cloned projects from real Swedish companies. Gain production-grade experience.</p>
-              </motion.div>
-
-              {/* Step 3 */}
-              <motion.div 
-                whileHover={{ y: -10 }}
-                className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100"
-              >
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-                  <Globe className="w-8 h-8 text-green-600" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">3. Remote Placement</h3>
-                <p className="text-sm text-green-600 font-semibold mb-4">ONGOING</p>
-                <p className="text-slate-600">Secure freelance or contract work with European startups. Earn in Euros while living in India.</p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 5: Social Proof (The Founders) */}
-      <section id="founders" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Bridging Two Worlds</h2>
-            <p className="text-lg text-slate-600">We are physically present in both ecosystems to ensure your success.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-48 h-48 rounded-full bg-slate-200 mb-6 overflow-hidden relative">
-                 {/* Placeholder for Founder Image */}
-                 <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-slate-400">
-                    <Users className="w-16 h-16" />
-                 </div>
+                <span className="font-bold text-xl tracking-tight text-white">DataBuffet<span className="text-cyan-400">.io</span></span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">The Bridge in Sweden</h3>
-              <p className="text-[#006AA7] font-medium mb-4">Co-Founder, Stockholm</p>
-              <p className="text-slate-600">"I'm on the ground in Stockholm, meeting with CTOs and Founders to open doors for our students. I ensure the curriculum matches exactly what European tech companies need right now."</p>
-            </div>
-
-            <div className="flex flex-col items-center text-center">
-              <div className="w-48 h-48 rounded-full bg-slate-200 mb-6 overflow-hidden relative">
-                 {/* Placeholder for Founder Image */}
-                 <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-slate-400">
-                    <Users className="w-16 h-16" />
-                 </div>
+              <p className="text-slate-400 max-w-sm mb-8">
+                We don't sell courses. We build careers. <br />
+                Join the remote revolution from India.
+              </p>
+              <div className="flex gap-4">
+                <div className="bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  <span className="text-sm text-slate-300">EMI Options Available</span>
+                </div>
+                <div className="bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  <span className="text-sm text-slate-300">Scholarships</span>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">The Guide in India</h3>
-              <p className="text-[#006AA7] font-medium mb-4">Co-Founder, Hyderabad</p>
-              <p className="text-slate-600">"I understand the challenges of Tier 2/3 college students. My job is to build your confidence, polish your skills, and prepare you to deliver world-class work from home."</p>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* SECTION 6: The "Fear of Missing Out" (Pricing/Scholarship) */}
-      <section className="py-24 bg-[#006AA7] text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#FECC00] rounded-full blur-3xl opacity-20" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">We invest in you, if you have the fire.</h2>
-          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
-            We don't ask for upfront tuition fees that burden your family. Our model is built on trust and shared success.
-          </p>
-
-          <div className="bg-white text-slate-900 rounded-2xl p-8 md:p-12 shadow-2xl max-w-2xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <GraduationCap className="w-8 h-8 text-[#006AA7]" />
-              <h3 className="text-2xl font-bold">Merit-Based Scholarship</h3>
-            </div>
-            <p className="text-slate-600 mb-8">
-              Apply for our entrance exam. Top performers get <span className="font-bold text-[#006AA7]">100% scholarship</span> or <span className="font-bold text-[#006AA7]">Income Share Agreements</span> (Pay only after you get hired).
-            </p>
-            
-            <div className="space-y-4">
-              <button className="w-full px-8 py-4 bg-[#FECC00] hover:bg-[#e6b800] text-slate-900 text-lg font-bold rounded-xl shadow-lg transition-all transform hover:-translate-y-1">
-                Apply for Entrance Test Now
+            <div className="bg-slate-900 rounded-2xl p-8 border border-slate-800 text-center">
+              <h3 className="text-2xl font-bold text-white mb-2">Ready to switch lanes?</h3>
+              <p className="text-slate-400 mb-6">Take the entrance test to check your eligibility.</p>
+              <button className="w-full bg-white hover:bg-slate-200 text-slate-950 font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2">
+                Start Entrance Test
+                <ArrowRight className="w-5 h-5" />
               </button>
-              <p className="text-sm text-slate-500">Limited seats for the upcoming cohort.</p>
+              <p className="text-xs text-slate-500 mt-4">
+                Curriculum reviewed by CTOs in Sweden 🇸🇪
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-[#006AA7] rounded-lg flex items-center justify-center">
-                  <Database className="w-5 h-5 text-[#FECC00]" />
-                </div>
-                <span className="font-bold text-xl text-white">DataBuffet.io</span>
-              </div>
-              <p className="max-w-xs">Bridging talent from India to the European Tech Ecosystem.</p>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">Program</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:text-white transition-colors">Curriculum</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Mentors</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Success Stories</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
             <p>&copy; 2025 DataBuffet.io. All rights reserved.</p>
-            <div className="flex items-center gap-4">
-              <MapPin className="w-4 h-4" />
-              <span>Stockholm • Hyderabad</span>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-white transition-colors">Privacy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms</a>
+              <a href="#" className="hover:text-white transition-colors">Instagram</a>
             </div>
           </div>
         </div>

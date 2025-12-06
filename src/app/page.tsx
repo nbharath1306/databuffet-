@@ -81,12 +81,12 @@ export default function LandingPage() {
               </motion.div>
               
               <motion.h1 variants={fadeIn} className="text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-6 leading-[1.1]">
-                Launch Your Global <br />
-                <span className="text-blue-600">Data Career</span>
+                Land a Job at a <br />
+                <span className="text-blue-600">European Tech Startup</span>
               </motion.h1>
               
               <motion.p variants={fadeIn} className="text-xl text-slate-600 mb-8 leading-relaxed max-w-lg">
-                The only career accelerator that bridges Indian talent with European product companies. Master the modern data stack and secure remote internships.
+                With our AI & Data Program. Live Learning from Experts, Hands-On, Practical Projects, Placement Assistance.
               </motion.p>
               
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
@@ -290,6 +290,73 @@ export default function LandingPage() {
               
               <button className="w-full py-4 bg-white text-slate-900 hover:bg-slate-100 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2 group-hover:gap-3">
                 View Track Details <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">Invest in your future with our comprehensive programs.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Basic Plan */}
+            <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-lg hover:shadow-xl transition-all">
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Basic</h3>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold text-slate-900">$160</span>
+                <span className="text-slate-500">/program</span>
+              </div>
+              <p className="text-slate-600 mb-8">Essential skills to kickstart your data career.</p>
+              <ul className="space-y-4 mb-8">
+                {[
+                  'Live Learning from Experts',
+                  'Hands-On, Practical Projects',
+                  'Placement Assistance',
+                  'Access to Community',
+                  'Course Completion Certificate'
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                    <span className="text-slate-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full py-4 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 rounded-xl font-bold transition-colors">
+                Get Started
+              </button>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="bg-[#0F172A] rounded-2xl p-8 border border-slate-800 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">RECOMMENDED</div>
+              <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold text-white">$180</span>
+                <span className="text-slate-400">/program</span>
+              </div>
+              <p className="text-slate-400 mb-8">Everything in Basic, plus advanced career support.</p>
+              <ul className="space-y-4 mb-8">
+                {[
+                  'Everything in Basic',
+                  'Priority Placement Assistance',
+                  '1-on-1 Mentorship Sessions',
+                  'Mock Interviews with Experts',
+                  'Resume & Portfolio Review'
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+                    <span className="text-slate-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/50">
+                Join Pro Cohort
               </button>
             </div>
           </div>
